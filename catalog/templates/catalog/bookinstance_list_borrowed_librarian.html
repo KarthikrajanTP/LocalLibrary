@@ -1,0 +1,18 @@
+<!-- catalog/templates/catalog/bookinstance_list_borrowed_librarian.html -->
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Borrowed Books</h1>
+  {% if bookinstance_list %}
+    <ul>
+      {% for bookinstance in bookinstance_list %}
+        <li>
+          {{ bookinstance.book.title }} (Due: {{ bookinstance.due_back }}) - Borrowed by {{ bookinstance.borrower.username }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No books are currently borrowed.</p>
+  {% endif %}
+{% endblock %}
